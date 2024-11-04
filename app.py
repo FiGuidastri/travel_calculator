@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     resultado = None
+    horario_partida = None
     horario_chegada = None
     valor_final = None
     
