@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tempo de Viagem</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h2>Calculadora de Tempo de Viagem</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/">
+                            <div class="form-group">
+                                <label for="distancia">Distância (km):</label>
+                                <input type="number" step="0.1" class="form-control" id="distancia" name="distancia" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="velocidade">Velocidade média (km/h):</label>
+                                <input type="number" step="0.1" class="form-control" id="velocidade" name="velocidade" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="num_paradas">Número de paradas:</label>
+                                <input type="number" class="form-control" id="num_paradas" name="num_paradas" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tempo_parada">Tempo médio de cada parada (minutos):</label>
+                                <input type="number" class="form-control" id="tempo_parada" name="tempo_parada" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="horario_partida">Horário de partida (HH:MM):</label>
+                                <input type="time" class="form-control" id="horario_partida" name="horario_partida">
+                            </div>
+                            <div class="form-group">
+                                <label for="consumo_medio">Consumo médio do veículo (km/l):</label>
+                                <input type="number" step="0.1" class="form-control" id="consumo_medio" name="consumo_medio">
+                            </div>
+                            <div class="form-group">
+                                <label for="preco_combustivel">Preço do combustível (R$/l):</label>
+                                <input type="number" step="0.01" class="form-control" id="preco_combustivel" name="preco_combustivel">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Calcular</button>
+                        </form>
+
+                        {% if resultado %}
+                            <div class="alert alert-success mt-4" role="alert">
+                                <strong>Tempo estimado de viagem:</strong> {{ resultado }}
+                            </div>
+                        {% endif %}
+
+                        {% if horario_partida %}
+                            <div class="alert alert-info mt-2" role="alert">
+                                <strong>Horário de saída:</strong> {{ horario_partida }}
+                            </div>
+                        {% endif %}
+                    
+                        {% if horario_chegada %}
+                            <div class="alert alert-info mt-2" role="alert">
+                                <strong>Horário estimado de chegada:</strong> {{ horario_chegada }}
+                            </div>
+                        {% endif %}
+                    
+                        {% if valor_final %}
+                            <div class="alert alert-warning mt-2" role="alert">
+                                <strong>Valor da viagem:</strong> {{ valor_final }}
+                            </div>
+                        {% endif %}
+                    
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
